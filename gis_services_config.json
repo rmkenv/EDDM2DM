@@ -1,0 +1,43 @@
+{
+  "address_services": [
+    {
+      "name": "Baltimore County Address Points",
+      "url": "https://bcgis.baltimorecountymd.gov/arcgis/rest/services/Addresses/AddressPoints/MapServer/0/query",
+      "query_params": {
+        "where": "ZIP_CODE in ({zip_codes})",
+        "outFields": "*",
+        "returnGeometry": "true",
+        "f": "json",
+        "resultRecordCount": 3000
+      },
+      "field_mappings": {
+        "address": "FULL_ADDRESS",
+        "street_number": "HOUSE_NUMBER",
+        "street_name": "STREET_NAME",
+        "street_type": "STREET_TYPE",
+        "city": "CITY_NAME",
+        "zip": "ZIP_CODE",
+        "use": "PROPERTY_USE",
+        "latitude": "LATITUDE",
+        "longitude": "LONGITUDE"
+      }
+    }
+  ],
+  "eddm_services": [
+    {
+      "name": "EDDM Carrier Routes",
+      "url": "https://emapdata.adc4gis.com/routes",
+      "query_params": {
+        "zips": "{zip_codes}"
+      },
+      "field_mappings": {
+        "zip": "zip",
+        "route_id": "zipcrid",
+        "income_avg": "inc_avg",
+        "pct_inc_gte_100k": "inc_gte_100k"
+      }
+    }
+  ],
+  "description": "GIS service endpoints for address and demographic data",
+  "last_updated": "2025-05-03"
+}
